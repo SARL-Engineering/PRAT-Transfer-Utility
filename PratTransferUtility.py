@@ -37,7 +37,11 @@ import signal
 
 import logging
 
-# Custom importss
+# Custom imports
+from Framework.LoggerCore import Logger
+from Framework.SettingsCore import Settings
+from Interface.StatusLoggerCore import StatusLoggerTab
+from Interface.SystemSettingsCore import SettingsTab
 
 #####################################
 # Global Variables
@@ -56,24 +60,30 @@ class ProgramWindow(QtGui.QMainWindow, form_class):
         self.setupUi(self)  # Has to be first call in class in order to link gui form objects
 
         # ########## Create the system logger and get an instance of it ##########
-        #TODO: Repurpose logger from pickandplate
-        #self.logger_core = PickAndPlateLogger(console_output=True)
-        #self.logger = logging.getLogger("PickAndPlate")
+        self.logger_core = Logger(self)
 
         # ########## Setup and get program settings ##########
         #TODO: Repurpose settings from pickandplate
         #self.settings = PickAndPlateSettings(self)
 
-        self.cleanup_table_widget.horizontalHeader().setResizeMode(0, QtGui.QHeaderView.ResizeToContents)
-        self.cleanup_table_widget.horizontalHeader().setResizeMode(1, QtGui.QHeaderView.ResizeToContents)
-        self.cleanup_table_widget.horizontalHeader().setResizeMode(2, QtGui.QHeaderView.ResizeToContents)
-        self.cleanup_table_widget.horizontalHeader().setResizeMode(3, QtGui.QHeaderView.ResizeToContents)
+        # ########## Setup and get program settings ##########
+        self.settings = Settings(self)
 
-        self.transfer_table_widget.horizontalHeader().setResizeMode(0, QtGui.QHeaderView.ResizeToContents)
-        self.transfer_table_widget.horizontalHeader().setResizeMode(1, QtGui.QHeaderView.ResizeToContents)
-        self.transfer_table_widget.horizontalHeader().setResizeMode(2, QtGui.QHeaderView.ResizeToContents)
-        self.transfer_table_widget.horizontalHeader().setResizeMode(3, QtGui.QHeaderView.ResizeToContents)
-        self.transfer_table_widget.horizontalHeader().setResizeMode(4, QtGui.QHeaderView.ResizeToContents)
+        # ########## Instantiations of tab classes ##########
+        self.log_viewer_tab = StatusLoggerTab(self)
+        self.settings_tab = SettingsTab(self)
+
+        header = self.cleanup_table_widget.horizontalHeader()
+        for section in range(header.count()):
+            header.setResizeMode(section, QtGui.QHeaderView.ResizeToContents)
+
+        header = self.transfer_table_widget.horizontalHeader()
+        for section in range(header.count()):
+            header.setResizeMode(section, QtGui.QHeaderView.ResizeToContents)
+
+        # ########## Setup of gui elements ##########
+        self.main_tab_widget.setCurrentIndex(0)
+
 
 if __name__ == "__main__":
     signal.signal(signal.SIGINT, signal.SIG_DFL)  # This allows the keyboard interrupt kill to work  properly
@@ -82,5 +92,4 @@ if __name__ == "__main__":
     myWindow.setWindowTitle("PRAT Transfer Utility")
     myWindow.resize(1500, 800)
     myWindow.show()  # Show the window in the application
-
     app.exec_()  # Execute launching of the application

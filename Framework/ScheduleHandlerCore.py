@@ -31,19 +31,16 @@ __status__ = "Development"
 # Imports
 #####################################
 # Python native imports
-import sys
-from PyQt4 import QtCore, QtGui, uic
-import signal
+from PyQt4 import QtCore, QtGui
+
 
 import logging
 
-# Custom importss
+# Custom imports
 
 #####################################
 # Global Variables
 #####################################
-form_class = uic.loadUiType("Interface/PRATTransferGui.ui")[0]  # Load the UI
-
 
 #####################################
 # ProgramWindow Class Definition

@@ -31,20 +31,48 @@ __status__ = "Development"
 # Imports
 #####################################
 # Python native imports
-import sys
-from PyQt4 import QtCore, QtGui, uic
-import signal
+from PyQt4 import QtCore, QtGui
 
 import logging
 
-# Custom importss
+# Custom imports
 
 #####################################
 # Global Variables
 #####################################
-form_class = uic.loadUiType("Interface/PRATTransferGui.ui")[0]  # Load the UI
 
 
 #####################################
-# ProgramWindow Class Definition
+# SettingsTab Class Definition
 #####################################
+class SettingsTab(QtCore.QObject):
+    def __init__(self, main_window):
+        QtCore.QObject.__init__(self)
+
+        # ########## Reference to top level window ##########
+        self.main_window = main_window
+
+        # ########## Reference to main_window gui elements ##########
+        self.transfer_table = self.main_window.transfer_table_widget
+        self.transfer_source = self.main_window.transfer_source_line_edit
+        self.transfer_source_browse = self.main_window.transfer_source_browse_button
+        self.transfer_destination = self.main_window.transfer_destination_line_edit
+        self.transfer_destination_browse = self.main_window.transfer_destination_browse_button
+        self.transfer_schedule_time = self.main_window.transfer_schedule_time_edit
+        self.transfer_clean_source_checkbox = self.main_window.transfer_clean_source_check_box
+        self.transfer_cleanup_age = self.main_window.transfer_cleanup_age_spin_box
+        self.transfer_enabled = self.main_window.transfer_enabled_check_box
+        self.transfer_add_update = self.main_window.transfer_add_update_button
+        self.transfer_remove = self.main_window.transfer_remove_button
+
+        self.cleanup_table = self.main_window.cleanup_table_widget
+        self.cleanup_source = self.main_window.cleanup_source_line_edit
+        self.cleanup_source_browse = self.main_window.cleanup_source_browse_button
+        self.check_path = self.main_window.check_path_line_edit
+        self.check_path_browse = self.main_window.check_path_browse_button
+        self.cleanup_schedule_time = self.main_window.cleanup_schedule_time_edit
+        self.cleanup_verify_exist = self.main_window.cleanup_verify_exist_check_box
+        self.cleanup_age = self.main_window.cleanup_only_age_spin_box
+        self.cleanup_enabled = self.main_window.cleanup_enabled_check_box
+        self.cleanup_add_update = self.main_window.cleanup_add_update_button
+        self.cleanup_remove = self.main_window.cleanup_remove_button

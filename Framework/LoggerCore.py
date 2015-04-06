@@ -31,20 +31,64 @@ __status__ = "Development"
 # Imports
 #####################################
 # Python native imports
-import sys
-from PyQt4 import QtCore, QtGui, uic
-import signal
-
+from PyQt4 import QtCore, QtGui
+from os import getenv, makedirs
+from os.path import exists
 import logging
 
-# Custom importss
+# Custom imports
 
 #####################################
 # Global Variables
 #####################################
-form_class = uic.loadUiType("Interface/PRATTransferGui.ui")[0]  # Load the UI
+application_hidden_path_root = getenv('APPDATA') + "\\TransferUtility"
+application_transfer_log_path = application_hidden_path_root + "\\transfer_log.txt"
+application_cleanup_log_path = application_hidden_path_root + "\\cleanup_log.txt"
 
 
 #####################################
-# ProgramWindow Class Definition
+# Logger Class Definition
 #####################################
+class Logger(QtCore.QObject):
+    def __init__(self, main_window):
+        QtCore.QObject.__init__(self)
+        # ########## Reference to top level window ##########
+        self.main_window = main_window
+
+        # ########## Get the instances of the loggers ##########
+        self.transfer_logger = logging.getLogger("TRANSFER_PRAT")
+        self.transfer_logger_file = open(application_transfer_log_path, 'a')
+
+        self.cleanup_logger = logging.getLogger("CLEANUP_PRAT")
+        self.cleanup_logger_file = open(application_cleanup_log_path, 'a')
+
+        # ########## Set up logger with desired settings ##########
+        self.setup_logger()
+
+        # ########## Place divider in log file to see new program launch ##########
+        self.add_startup_log_buffer_text()
+
+    def setup_logger(self):
+        formatter = logging.Formatter(fmt='%(levelname)s : %(asctime)s :  %(message)s', datefmt='%m/%d/%y %H:%M:%S')
+
+        if not exists(application_hidden_path_root):
+            makedirs(application_hidden_path_root)
+
+        self.transfer_logger.setLevel(logging.DEBUG)
+        transfer_file_handler = logging.FileHandler(filename=application_transfer_log_path)
+        transfer_file_handler.setFormatter(formatter)
+        transfer_file_handler.setLevel(logging.DEBUG)
+        self.transfer_logger.addHandler(transfer_file_handler)
+
+        self.cleanup_logger.setLevel(logging.DEBUG)
+        cleanup_file_handler = logging.FileHandler(filename=application_cleanup_log_path)
+        cleanup_file_handler.setFormatter(formatter)
+        cleanup_file_handler.setLevel(logging.DEBUG)
+        self.cleanup_logger.addHandler(cleanup_file_handler)
+
+    def add_startup_log_buffer_text(self):
+        self.transfer_logger_file.write("\n########## New Instance of Application Started ##########\n\n")
+        self.transfer_logger_file.close()
+
+        self.cleanup_logger_file.write("\n########## New Instance of Application Started ##########\n\n")
+        self.cleanup_logger_file.close()
