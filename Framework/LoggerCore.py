@@ -69,7 +69,8 @@ class Logger(QtCore.QObject):
         self.add_startup_log_buffer_text()
 
     def setup_logger(self):
-        formatter = logging.Formatter(fmt='%(levelname)s : %(asctime)s :  %(message)s', datefmt='%m/%d/%y %H:%M:%S')
+        # fmt='%(levelname)s : %(asctime)s :  %(message)s'  In case this needs to be fixed later
+        formatter = logging.Formatter(fmt='%(asctime)s :  %(message)s', datefmt='%m/%d/%y %H:%M:%S')
 
         if not exists(application_hidden_path_root):
             makedirs(application_hidden_path_root)

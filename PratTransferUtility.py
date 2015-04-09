@@ -63,27 +63,63 @@ class ProgramWindow(QtGui.QMainWindow, form_class):
         self.logger_core = Logger(self)
 
         # ########## Setup and get program settings ##########
-        #TODO: Repurpose settings from pickandplate
-        #self.settings = PickAndPlateSettings(self)
-
-        # ########## Setup and get program settings ##########
         self.settings = Settings(self)
 
         # ########## Instantiations of tab classes ##########
         self.log_viewer_tab = StatusLoggerTab(self)
         self.settings_tab = SettingsTab(self)
 
-        header = self.cleanup_table_widget.horizontalHeader()
-        for section in range(header.count()):
-            header.setResizeMode(section, QtGui.QHeaderView.ResizeToContents)
+        # ########## Creation of the system tray icon ##########
+        self.tray_icon = None
+        self.tray_menu = None
+        self.setup_tray_icon()
 
-        header = self.transfer_table_widget.horizontalHeader()
-        for section in range(header.count()):
-            header.setResizeMode(section, QtGui.QHeaderView.ResizeToContents)
+        # ########## Setup application taskbar icon ##########
+        self.setup_taskbar_icon()
 
         # ########## Setup of gui elements ##########
         self.main_tab_widget.setCurrentIndex(0)
 
+    def setup_tray_icon(self):
+        self.tray_icon = QtGui.QSystemTrayIcon(QtGui.QIcon("Resources/app_icon.png"))
+
+        self.tray_menu = QtGui.QMenu()
+        self.tray_menu.addAction("Show")
+        self.tray_menu.addAction("Exit")
+        self.tray_menu.triggered.connect(self.on_tray_exit_triggered_slot)
+        self.tray_icon.setContextMenu(self.tray_menu)
+
+        self.tray_icon.hide()
+
+    def setup_taskbar_icon(self):
+        app_icon = QtGui.QIcon()
+        app_icon.addFile("Resources/app_icon.png", QtCore.QSize(16, 16))
+        app_icon.addFile("Resources/app_icon.png", QtCore.QSize(24, 24))
+        app_icon.addFile("Resources/app_icon.png", QtCore.QSize(32, 32))
+        app_icon.addFile("Resources/app_icon.png", QtCore.QSize(48, 48))
+        app_icon.addFile("Resources/app_icon.png", QtCore.QSize(256, 256))
+        self.setWindowIcon(app_icon)
+
+    def closeEvent(self, event):
+        if self.isHidden():
+            event.accept()
+        else:
+            message = "Are you sure you want to exit? Press NO to hide instead."
+            reply = QtGui.QMessageBox.question(self, "Exit Dialog", message, QtGui.QMessageBox.Yes, QtGui.QMessageBox.No)
+
+            if reply == QtGui.QMessageBox.Yes:
+                event.accept()
+            else:
+                self.hide()
+                self.tray_icon.show()
+                event.ignore()
+
+    def on_tray_exit_triggered_slot(self, event):
+        if event.text() == "Exit":
+            self.close()
+        elif event.text() == "Show":
+            self.show()
+            self.tray_icon.hide()
 
 if __name__ == "__main__":
     signal.signal(signal.SIGINT, signal.SIG_DFL)  # This allows the keyboard interrupt kill to work  properly

@@ -31,9 +31,7 @@ __status__ = "Development"
 # Imports
 #####################################
 # Python native imports
-from PyQt4 import QtCore, QtGui
-
-import logging
+from PyQt4 import QtCore
 
 # Custom imports
 
@@ -49,5 +47,17 @@ class Settings(QtCore.QObject):
     def __init__(self, main_window):
         QtCore.QObject.__init__(self)
 
-    # ########## Reference to top level window ##########
+        # ########## Reference to top level window ##########
         self.main_window = main_window
+
+        # ########## Set up settings for program ##########
+        self.setup_pick_and_plate_settings()
+
+        # ########## Create Instance of settings ##########
+        self.settings = QtCore.QSettings()
+
+    @staticmethod
+    def setup_pick_and_plate_settings():
+        QtCore.QCoreApplication.setOrganizationName("OSU SARL")
+        QtCore.QCoreApplication.setOrganizationDomain("ehsc.oregonstate.edu/sarl")
+        QtCore.QCoreApplication.setApplicationName("Transfer Utility")

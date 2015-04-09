@@ -254,17 +254,27 @@ QCheckBox:indicator:checked{
               </row>
               <column>
                <property name="text">
-                <string>Cleanup Path</string>
+                <string>A Path</string>
                </property>
               </column>
               <column>
                <property name="text">
-                <string>Check Path</string>
+                <string>B Path</string>
                </property>
               </column>
               <column>
                <property name="text">
                 <string>Schedule</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>A if in B</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>B and A</string>
                </property>
               </column>
               <column>
@@ -294,10 +304,20 @@ QCheckBox:indicator:checked{
               </item>
               <item row="0" column="3">
                <property name="text">
-                <string>180</string>
+                <string>True</string>
                </property>
               </item>
               <item row="0" column="4">
+               <property name="text">
+                <string>False</string>
+               </property>
+              </item>
+              <item row="0" column="5">
+               <property name="text">
+                <string>180</string>
+               </property>
+              </item>
+              <item row="0" column="6">
                <property name="text">
                 <string>Yes</string>
                </property>
@@ -351,12 +371,25 @@ QCheckBox:indicator:checked{
               <property name="text">
                <string/>
               </property>
+              <property name="checked">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="Line" name="line_3">
+              <property name="styleSheet">
+               <string notr="true">background-color:rgb(55,55,55);</string>
+              </property>
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
              </widget>
             </item>
             <item>
              <widget class="QLabel" name="label_16">
               <property name="text">
-               <string>Cleanup Age (Days)</string>
+               <string>Cleanup Age</string>
               </property>
              </widget>
             </item>
@@ -368,11 +401,17 @@ QCheckBox:indicator:checked{
                 <verstretch>0</verstretch>
                </sizepolicy>
               </property>
+              <property name="suffix">
+               <string> Days</string>
+              </property>
+              <property name="prefix">
+               <string/>
+              </property>
               <property name="maximum">
                <number>365</number>
               </property>
               <property name="value">
-               <number>365</number>
+               <number>0</number>
               </property>
              </widget>
             </item>
@@ -405,6 +444,9 @@ QCheckBox:indicator:checked{
               <property name="calendarPopup">
                <bool>false</bool>
               </property>
+              <property name="timeSpec">
+               <enum>Qt::LocalTime</enum>
+              </property>
              </widget>
             </item>
             <item>
@@ -427,15 +469,19 @@ QCheckBox:indicator:checked{
             <item>
              <widget class="QLabel" name="label_11">
               <property name="text">
-               <string>Cleanup Path</string>
+               <string>A Path</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="cleanup_source_line_edit"/>
+             <widget class="QLineEdit" name="cleanup_a_path_line_edit">
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+             </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="cleanup_source_browse_button">
+             <widget class="QPushButton" name="cleanup_a_path_browse_button">
               <property name="text">
                <string>Browse</string>
               </property>
@@ -501,6 +547,9 @@ QCheckBox:indicator:checked{
               <property name="styleSheet">
                <string notr="true"/>
               </property>
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
              </widget>
             </item>
             <item>
@@ -539,6 +588,9 @@ QCheckBox:indicator:checked{
               <property name="text">
                <string/>
               </property>
+              <property name="checked">
+               <bool>true</bool>
+              </property>
              </widget>
             </item>
             <item>
@@ -561,31 +613,71 @@ QCheckBox:indicator:checked{
             <item>
              <widget class="QLabel" name="label_14">
               <property name="text">
-               <string>Verify Files Exist in Check Path</string>
+               <string>Clean A Only If Files Are In B</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QCheckBox" name="cleanup_verify_exist_check_box">
+             <widget class="QCheckBox" name="cleanup_clean_a_if_in_b_check_box">
+              <property name="text">
+               <string/>
+              </property>
+              <property name="checked">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="Line" name="line">
+              <property name="styleSheet">
+               <string notr="true">background-color:rgb(55,55,55);</string>
+              </property>
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_15">
+              <property name="text">
+               <string>Clean B As Well As A</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="cleanup_clean_b_also_check_box">
               <property name="text">
                <string/>
               </property>
              </widget>
             </item>
             <item>
+             <widget class="Line" name="line_2">
+              <property name="styleSheet">
+               <string notr="true">background-color:rgb(55,55,55);</string>
+              </property>
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
              <widget class="QLabel" name="label_17">
               <property name="text">
-               <string>Cleanup Age (Days)</string>
+               <string>Cleanup Age</string>
               </property>
              </widget>
             </item>
             <item>
              <widget class="QSpinBox" name="cleanup_only_age_spin_box">
+              <property name="suffix">
+               <string> Days</string>
+              </property>
               <property name="maximum">
                <number>365</number>
               </property>
               <property name="value">
-               <number>365</number>
+               <number>0</number>
               </property>
              </widget>
             </item>
@@ -645,7 +737,11 @@ QCheckBox:indicator:checked{
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="transfer_destination_line_edit"/>
+             <widget class="QLineEdit" name="transfer_destination_line_edit">
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+             </widget>
             </item>
             <item>
              <widget class="QPushButton" name="transfer_destination_browse_button">
@@ -674,15 +770,19 @@ QCheckBox:indicator:checked{
             <item>
              <widget class="QLabel" name="label_12">
               <property name="text">
-               <string>Check Path</string>
+               <string>B Path</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="check_path_line_edit"/>
+             <widget class="QLineEdit" name="cleanup_b_path_line_edit">
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+             </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="check_path_browse_button">
+             <widget class="QPushButton" name="cleanup_b_path_browse_button">
               <property name="text">
                <string>Browse</string>
               </property>
@@ -716,6 +816,9 @@ QCheckBox:indicator:checked{
              <widget class="QCheckBox" name="transfer_enabled_check_box">
               <property name="text">
                <string/>
+              </property>
+              <property name="checked">
+               <bool>true</bool>
               </property>
              </widget>
             </item>
