@@ -43,6 +43,8 @@ from Framework.SettingsCore import Settings
 from Interface.StatusLoggerCore import StatusLoggerTab
 from Interface.SystemSettingsCore import SettingsTab
 
+from Framework.ScheduleHandlerCore import ScheduleHandler
+
 #####################################
 # Global Variables
 #####################################
@@ -53,6 +55,9 @@ form_class = uic.loadUiType("Interface/PRATTransferGui.ui")[0]  # Load the UI
 # ProgramWindow Class Definition
 #####################################
 class ProgramWindow(QtGui.QMainWindow, form_class):
+
+    kill_all_threads = QtCore.pyqtSignal()
+
     def __init__(self, parent=None):
         QtGui.QMainWindow.__init__(self, parent)
 
@@ -69,6 +74,9 @@ class ProgramWindow(QtGui.QMainWindow, form_class):
         self.log_viewer_tab = StatusLoggerTab(self)
         self.settings_tab = SettingsTab(self)
 
+        # ########## Instantiations of the scheduler class ##########
+        self.scheduler = ScheduleHandler(self)
+
         # ########## Creation of the system tray icon ##########
         self.tray_icon = None
         self.tray_menu = None
@@ -79,6 +87,12 @@ class ProgramWindow(QtGui.QMainWindow, form_class):
 
         # ########## Setup of gui elements ##########
         self.main_tab_widget.setCurrentIndex(0)
+
+        # ########## Setup signal and slot connections ##########
+        self.connect_signals_to_slots()
+
+    def connect_signals_to_slots(self):
+        self.kill_all_threads.connect(self.scheduler.on_kill_threads_slot)
 
     def setup_tray_icon(self):
         self.tray_icon = QtGui.QSystemTrayIcon(QtGui.QIcon("Resources/app_icon.png"))
@@ -104,12 +118,14 @@ class ProgramWindow(QtGui.QMainWindow, form_class):
 
     def closeEvent(self, event):
         if self.isHidden():
+            self.kill_all_threads.emit()
             event.accept()
         else:
             message = "Are you sure you want to exit? Press NO to hide instead."
             reply = QtGui.QMessageBox.question(self, "Exit Dialog", message, QtGui.QMessageBox.Yes, QtGui.QMessageBox.No)
 
             if reply == QtGui.QMessageBox.Yes:
+                self.kill_all_threads.emit()
                 event.accept()
             else:
                 self.hide()
