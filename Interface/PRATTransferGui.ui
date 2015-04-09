@@ -519,6 +519,13 @@ QCheckBox:indicator:checked{
              </widget>
             </item>
             <item>
+             <widget class="QPushButton" name="cleanup_clear_button">
+              <property name="text">
+               <string>Clear Selection</string>
+              </property>
+             </widget>
+            </item>
+            <item>
              <spacer name="horizontalSpacer_14">
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
@@ -709,6 +716,13 @@ QCheckBox:indicator:checked{
              <widget class="QPushButton" name="transfer_remove_button">
               <property name="text">
                <string>Remove From Queue</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="transfer_clear_button">
+              <property name="text">
+               <string>Clear Selection</string>
               </property>
              </widget>
             </item>

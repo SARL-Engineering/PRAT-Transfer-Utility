@@ -82,10 +82,12 @@ class ProgramWindow(QtGui.QMainWindow, form_class):
 
     def setup_tray_icon(self):
         self.tray_icon = QtGui.QSystemTrayIcon(QtGui.QIcon("Resources/app_icon.png"))
+        self.tray_icon.activated.connect(self.on_tray_exit_triggered_slot)
 
         self.tray_menu = QtGui.QMenu()
         self.tray_menu.addAction("Show")
         self.tray_menu.addAction("Exit")
+
         self.tray_menu.triggered.connect(self.on_tray_exit_triggered_slot)
         self.tray_icon.setContextMenu(self.tray_menu)
 
@@ -115,7 +117,12 @@ class ProgramWindow(QtGui.QMainWindow, form_class):
                 event.ignore()
 
     def on_tray_exit_triggered_slot(self, event):
-        if event.text() == "Exit":
+        if event == 1:
+            pass
+        elif (event == 2) or (event == 3):
+            self.show()
+            self.tray_icon.hide()
+        elif event.text() == "Exit":
             self.close()
         elif event.text() == "Show":
             self.show()
@@ -125,7 +132,9 @@ if __name__ == "__main__":
     signal.signal(signal.SIGINT, signal.SIG_DFL)  # This allows the keyboard interrupt kill to work  properly
     app = QtGui.QApplication(sys.argv)  # Create the base qt gui application
     myWindow = ProgramWindow()  # Make a window in this application using the pnp MyWindowClass
-    myWindow.setWindowTitle("PRAT Transfer Utility")
+    myWindow.setWindowTitle("Transfer Utility")
+    myWindow.setWindowFlags(myWindow.windowFlags() & ~QtCore.Qt.WindowMinimizeButtonHint)
+    myWindow.setWindowFlags(myWindow.windowFlags() & ~QtCore.Qt.WindowMaximizeButtonHint)
     myWindow.resize(1500, 800)
     myWindow.show()  # Show the window in the application
     app.exec_()  # Execute launching of the application

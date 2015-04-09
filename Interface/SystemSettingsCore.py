@@ -65,6 +65,7 @@ class SettingsTab(QtCore.QObject):
         self.transfer_enabled = self.main_window.transfer_enabled_check_box
         self.transfer_add_update = self.main_window.transfer_add_update_button
         self.transfer_remove = self.main_window.transfer_remove_button
+        self.transfer_clear = self.main_window.transfer_clear_button
 
         self.cleanup_table = self.main_window.cleanup_table_widget
         self.cleanup_a_path = self.main_window.cleanup_a_path_line_edit
@@ -78,6 +79,7 @@ class SettingsTab(QtCore.QObject):
         self.cleanup_enabled = self.main_window.cleanup_enabled_check_box
         self.cleanup_add_update = self.main_window.cleanup_add_update_button
         self.cleanup_remove = self.main_window.cleanup_remove_button
+        self.cleanup_clear = self.main_window.cleanup_clear_button
 
         # ########## Load all saved schedules ##########
         self.load_saved_settings()
@@ -87,6 +89,10 @@ class SettingsTab(QtCore.QObject):
         self.transfer_table.setEditTriggers(QtGui.QAbstractItemView.NoEditTriggers)
         self.cleanup_table.setEditTriggers(QtGui.QAbstractItemView.NoEditTriggers)
 
+        # ########## Clear all data entry points ##########
+        self.on_transfer_clear_clicked_slot()
+        self.on_cleanup_clear_clicked_slot()
+
         # ########## Connect buttons to methods ##########
         self.connect_signals_to_slots()
 
@@ -94,12 +100,14 @@ class SettingsTab(QtCore.QObject):
         self.transfer_table.cellClicked.connect(self.on_transfer_table_cell_clicked_slot)
         self.transfer_add_update.clicked.connect(self.on_transfer_add_updated_clicked_slot)
         self.transfer_remove.clicked.connect(self.on_transfer_remove_clicked_slot)
+        self.transfer_clear.clicked.connect(self.on_transfer_clear_clicked_slot)
         self.transfer_source_browse.clicked.connect(self.on_transfer_source_browse_clicked_slot)
         self.transfer_destination_browse.clicked.connect(self.on_transfer_dest_browse_clicked_slot)
 
         self.cleanup_table.cellClicked.connect(self.on_cleanup_table_cell_clicked_slot)
         self.cleanup_add_update.clicked.connect(self.on_cleanup_add_updated_clicked_slot)
         self.cleanup_remove.clicked.connect(self.on_cleanup_remove_clicked_slot)
+        self.cleanup_clear.clicked.connect(self.on_cleanup_clear_clicked_slot)
         self.cleanup_a_browse.clicked.connect(self.on_a_path_browse_clicked_slot)
         self.cleanup_b_browse.clicked.connect(self.on_b_path_browse_clicked_slot)
 
@@ -182,6 +190,8 @@ class SettingsTab(QtCore.QObject):
             table.setItem(0, 4, QtGui.QTableWidgetItem(str(cleanup_age) + " Days"))
             table.setItem(0, 5, QtGui.QTableWidgetItem(str(transfer_enabled)))
 
+        table.clearSelection()
+        self.clear_transfer_data_entry_points()
         self.save_tables_to_settings()
 
     def on_transfer_remove_clicked_slot(self, event):
@@ -193,6 +203,8 @@ class SettingsTab(QtCore.QObject):
             row = self.is_in_table(table, source_path, dest_path, 0)
             table.removeRow(row)
 
+        table.clearSelection()
+        self.clear_transfer_data_entry_points()
         self.save_tables_to_settings()
 
     def on_transfer_source_browse_clicked_slot(self):
@@ -224,6 +236,18 @@ class SettingsTab(QtCore.QObject):
             self.transfer_enabled.setChecked(True)
         else:
             self.transfer_enabled.setChecked(False)
+
+    def on_transfer_clear_clicked_slot(self):
+        self.transfer_table.clearSelection()
+        self.clear_transfer_data_entry_points()
+
+    def clear_transfer_data_entry_points(self):
+        self.transfer_source.setText("")
+        self.transfer_destination.setText("")
+        self.transfer_schedule_time.setTime(QtCore.QTime.fromString("12:00 AM", "h:mm AP"))
+        self.transfer_clean_source_checkbox.setChecked(False)
+        self.transfer_cleanup_age.setValue(0)
+        self.transfer_enabled.setChecked(False)
 
     def on_cleanup_add_updated_clicked_slot(self):
         table = self.cleanup_table
@@ -257,6 +281,8 @@ class SettingsTab(QtCore.QObject):
             table.setItem(0, 5, QtGui.QTableWidgetItem(str(cleanup_age) + " Days"))
             table.setItem(0, 6, QtGui.QTableWidgetItem(str(cleanup_enabled)))
 
+        table.clearSelection()
+        self.clear_cleanup_data_entry_points()
         self.save_tables_to_settings()
 
     def on_cleanup_remove_clicked_slot(self):
@@ -268,6 +294,9 @@ class SettingsTab(QtCore.QObject):
             row = self.is_in_table(table, source_path, dest_path, 0)
             table.removeRow(row)
 
+
+        table.clearSelection()
+        self.clear_cleanup_data_entry_points()
         self.save_tables_to_settings()
 
     def on_a_path_browse_clicked_slot(self):
@@ -304,6 +333,19 @@ class SettingsTab(QtCore.QObject):
             self.cleanup_enabled.setChecked(True)
         else:
             self.cleanup_enabled.setChecked(False)
+
+    def on_cleanup_clear_clicked_slot(self):
+        self.cleanup_table.clearSelection()
+        self.clear_cleanup_data_entry_points()
+
+    def clear_cleanup_data_entry_points(self):
+        self.cleanup_a_path.setText("")
+        self.cleanup_b_path.setText("")
+        self.cleanup_schedule_time.setTime(QtCore.QTime.fromString("12:00 AM", "h:mm AP"))
+        self.cleanup_a_if_in_b.setChecked(False)
+        self.cleanup_clean_b.setChecked(False)
+        self.cleanup_age.setValue(0)
+        self.cleanup_enabled.setChecked(False)
 
     def save_tables_to_settings(self):
         tt = self.transfer_table
