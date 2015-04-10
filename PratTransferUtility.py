@@ -88,11 +88,17 @@ class ProgramWindow(QtGui.QMainWindow, form_class):
         # ########## Setup of gui elements ##########
         self.main_tab_widget.setCurrentIndex(0)
 
+        # ########## Class variables ##########
+        self.threads_to_wait_for = []
+        self.threads_to_wait_for.append(self.log_viewer_tab)
+        self.threads_to_wait_for.append(self.scheduler)
+
         # ########## Setup signal and slot connections ##########
         self.connect_signals_to_slots()
 
     def connect_signals_to_slots(self):
         self.kill_all_threads.connect(self.scheduler.on_kill_threads_slot)
+        self.kill_all_threads.connect(self.log_viewer_tab.on_kill_threads_slot)
 
     def setup_tray_icon(self):
         self.tray_icon = QtGui.QSystemTrayIcon(QtGui.QIcon("Resources/app_icon.png"))
@@ -119,6 +125,7 @@ class ProgramWindow(QtGui.QMainWindow, form_class):
     def closeEvent(self, event):
         if self.isHidden():
             self.kill_all_threads.emit()
+            self.wait_for_all_threads()
             event.accept()
         else:
             message = "Are you sure you want to exit? Press NO to hide instead."
@@ -126,6 +133,7 @@ class ProgramWindow(QtGui.QMainWindow, form_class):
 
             if reply == QtGui.QMessageBox.Yes:
                 self.kill_all_threads.emit()
+                self.wait_for_all_threads()
                 event.accept()
             else:
                 self.hide()
@@ -143,6 +151,10 @@ class ProgramWindow(QtGui.QMainWindow, form_class):
         elif event.text() == "Show":
             self.show()
             self.tray_icon.hide()
+
+    def wait_for_all_threads(self):
+        for thread in self.threads_to_wait_for:
+            thread.wait()
 
 if __name__ == "__main__":
     signal.signal(signal.SIGINT, signal.SIG_DFL)  # This allows the keyboard interrupt kill to work  properly
