@@ -189,7 +189,7 @@ class ScheduleHandler(QtCore.QThread):
         midnight = QtCore.QTime.fromString("12:00:00 AM", "h:mm:ss AP")
 
         if current_time.toString("h:mm:ss AP") == midnight.toString("h:mm:ss AP"):
-            self.processed = {}
+            self.processed = []
             self.msleep(1000)
 
     def check_schedules_and_add_to_queue(self):
