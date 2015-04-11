@@ -119,11 +119,11 @@ class StatusLoggerTab(QtCore.QThread):
         return False
 
     def update_transfer_log_visuals(self):
-        self.file_text_browser.setText("\n".join(self.transfer_raw_text))
+        self.file_text_browser.setText("".join(self.transfer_raw_text))
         self.file_text_browser.verticalScrollBar().setValue(self.file_text_browser.verticalScrollBar().maximum())
 
     def update_cleanup_log_visuals(self):
-        self.cleanup_text_browser.setText("\n".join(self.cleanup_raw_text))
+        self.cleanup_text_browser.setText("".join(self.cleanup_raw_text))
         self.cleanup_text_browser.verticalScrollBar().setValue(self.cleanup_text_browser.verticalScrollBar().maximum())
 
     def on_kill_threads_slot(self):

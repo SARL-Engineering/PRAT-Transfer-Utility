@@ -34,6 +34,8 @@ __status__ = "Development"
 from PyQt4 import QtCore, QtGui
 import os
 import logging
+from distutils.dir_util import copy_tree, remove_tree
+import time
 
 # Custom imports
 
@@ -75,25 +77,72 @@ class QueueProcessor(QtCore.QThread):
 
         is_error = False
 
-        if a_to_b and not is_error:
+        if (a_to_b == "True") and not is_error:
             if os.path.isdir(a) and os.path.isdir(b):
-                pass
+                try:
+                    self.transfer_logger.info("Transferring " + a + " to " + b)
+
+                    start_time = time.clock()
+                    copy_tree(a, b)
+                    stop_time = time.clock()
+                    diff_time = str(stop_time-start_time)
+
+                    self.transfer_logger.info("Transferred " + a + " to " + b + " in " + diff_time + " seconds.\n")
+
+                except Exception, e:
+                    self.transfer_logger.info("Directories exist, but file copy failed! Please check permissions.\n" +
+                                              str(e) + "\n")
             else:
                 is_error = True
-                self.transfer_logger.info("One or both of the specified paths do not exist. Please check path A: "
-                                          + a + " and path B: " + b)
+                self.transfer_logger.info("One or both of the specified paths does not exist. File copy failed.\n"
+                                          + "Please check paths:\n" + a + " and " + b + ".\n")
 
+        if (clean_a == "True") and (c_a_if_in_b == "False") and not is_error:
+            if os.path.isdir(a):
+                is_error = self.clean_path(a, "", "False", cleanup_age)
+            else:
+                is_error = True
+                self.cleanup_logger.info("The specified path does not exist. Folder cleanup failed.\n" +
+                                         "Please check path: " + a)
 
-        if clean_a and not is_error:
-            pass
-
-        if c_a_if_in_b and not is_error:
-            pass
-
-        if c_b_and_a and not is_error:
-            pass
+        elif (clean_a == "True") and not is_error:
+            if os.path.isdir(a) and os.path.isdir(b):
+                self.clean_path(a, b, c_a_if_in_b, cleanup_age)
+                if c_b_and_a == "True":
+                    self.clean_path(b, b, "False", cleanup_age)
+            else:
+                self.cleanup_logger.info("One or both of the specified paths does not exist. Folder cleanup failed.\n" +
+                                         "Please check paths:\n" + a + " and " + b + ".\n")
 
         self.task_done.emit()
+
+    def clean_path(self, a, b, check_b_before_clean, age):
+        for file_folder in os.listdir(a):
+            file_path_a = os.path.join(a, file_folder)
+            file_path_b = os.path.join(b, file_folder)
+
+            try:
+                if os.path.isfile(file_path_a):
+                    if os.path.getmtime(file_path_a) < (time.time() - (86400 * int(age[:-5]))):
+                        if check_b_before_clean == "True":
+                            if os.path.exists(file_path_b):
+                                os.unlink(file_path_a)
+                                self.cleanup_logger.info("Cleaned up file: " + str(file_path_a))
+                        else:
+                            os.unlink(file_path_a)
+                            self.cleanup_logger.info("Cleaned up file: " + str(file_path_a))
+
+                elif os.path.isdir(file_path_a):
+                    self.clean_path(file_path_a, file_path_b, check_b_before_clean, age)
+                    for dirpath, dirnames, files in os.walk(file_path_a):
+                        if not files:
+                            os.rmdir(file_path_a)
+                            self.cleanup_logger.info("Cleaned up empty folder: " + str(file_path_a))
+            except Exception, e:
+                self.cleanup_logger.info("Directory(s) exists, but cleanup failed. Please check permissions.")
+                return True
+
+        return False
 
 
 #####################################
@@ -164,6 +213,16 @@ class ScheduleHandler(QtCore.QThread):
         self.settings.beginGroup("CleanupTable")
         for i in range(self.settings.childGroups().count()):
             self.settings.beginGroup(str(i))
+
+            if self.settings.value("enabled").toString() == "True":
+                sched_time = QtCore.QTime.fromString(self.settings.value("schedule").toString(), "h:mm AP")
+                if (sched_time.hour() == current_time.hour()) and (sched_time.minute() == current_time.minute()):
+                    a = self.settings.value("a_path").toString()
+                    b = self.settings.value("b_path").toString()
+                    a_if_in_b = self.settings.value("a_if_in_b").toString()
+                    b_and_a = self.settings.value("b_and_a").toString()
+                    cleanup_age = self.settings.value("cleanup_age").toString()
+                    self.add_if_new_to_queue(a, b, "False", "True", a_if_in_b, b_and_a, cleanup_age)
 
             self.settings.endGroup()
         self.settings.endGroup()

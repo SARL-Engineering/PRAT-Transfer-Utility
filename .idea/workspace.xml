@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ae4dd53b-e644-431a-8896-e363c7fbf7b4" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Interface/PRATTransferGui.ui" afterPath="$PROJECT_DIR$/Interface/PRATTransferGui.ui" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PratTransferUtility.py" afterPath="$PROJECT_DIR$/PratTransferUtility.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Framework/ScheduleHandlerCore.py" afterPath="$PROJECT_DIR$/Framework/ScheduleHandlerCore.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Interface/StatusLoggerCore.py" afterPath="$PROJECT_DIR$/Interface/StatusLoggerCore.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -21,7 +19,7 @@
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/PRAT-Transfer-Utility$RTSP_Viewer_Local_Launch.coverage" NAME="RTSP Viewer Local Launch Coverage Results" MODIFIED="1428276914697" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/PycharmProjects/RTSP Viewer" />
-    <SUITE FILE_PATH="coverage/PRAT-Transfer-Utility$Local_Launch.coverage" NAME="Local Launch Coverage Results" MODIFIED="1428624762020" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PRAT-Transfer-Utility$Local_Launch.coverage" NAME="Local Launch Coverage Results" MODIFIED="1428719233583" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -40,7 +38,7 @@
           <file leaf-file-name="PratTransferUtility.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/PratTransferUtility.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="1706" max-vertical-offset="2822">
+                <state vertical-scroll-proportion="0.0" vertical-offset="2261" max-vertical-offset="2907">
                   <caret line="135" column="43" selection-start-line="135" selection-start-column="43" selection-end-line="135" selection-end-column="43" />
                   <folding>
                     <element signature="e#1184#1194#0" expanded="true" />
@@ -53,8 +51,8 @@
           <file leaf-file-name="ScheduleHandlerCore.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Framework/ScheduleHandlerCore.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.60714287" vertical-offset="782" max-vertical-offset="3281">
-                  <caret line="81" column="31" selection-start-line="81" selection-start-column="31" selection-end-line="81" selection-end-column="31" />
+                <state vertical-scroll-proportion="1.5688146" vertical-offset="0" max-vertical-offset="4284">
+                  <caret line="116" column="25" selection-start-line="116" selection-start-column="25" selection-end-line="116" selection-end-column="25" />
                   <folding>
                     <element signature="e#1184#1215#0" expanded="true" />
                   </folding>
@@ -65,8 +63,8 @@
           <file leaf-file-name="StatusLoggerCore.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Interface/StatusLoggerCore.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="1281" max-vertical-offset="2295">
-                  <caret line="126" column="88" selection-start-line="126" selection-start-column="88" selection-end-line="126" selection-end-column="88" />
+                <state vertical-scroll-proportion="0.0" vertical-offset="957" max-vertical-offset="2295">
+                  <caret line="110" column="20" selection-start-line="110" selection-start-column="20" selection-end-line="110" selection-end-column="20" />
                   <folding>
                     <element signature="e#1184#1215#0" expanded="true" />
                   </folding>
@@ -77,7 +75,7 @@
           <file leaf-file-name="LoggerCore.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Framework/LoggerCore.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="410" max-vertical-offset="1666">
+                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1666">
                   <caret line="70" column="27" selection-start-line="70" selection-start-column="27" selection-end-line="70" selection-end-column="27" />
                   <folding />
                 </state>
@@ -88,13 +86,26 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="PratTransferUtility.py" pinned="false" current-in-tab="true">
+          <file leaf-file-name="PratTransferUtility.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/PratTransferUtility.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.7744898" vertical-offset="1893" max-vertical-offset="2941">
-                  <caret line="156" column="25" selection-start-line="156" selection-start-column="25" selection-end-line="156" selection-end-column="25" />
+                <state vertical-scroll-proportion="0.0" vertical-offset="1628" max-vertical-offset="2907">
+                  <caret line="164" column="89" selection-start-line="164" selection-start-column="89" selection-end-line="164" selection-end-column="89" />
                   <folding>
                     <element signature="e#1184#1194#0" expanded="true" />
+                    <element signature="e#3379#3525#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="SystemSettingsCore.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/Interface/SystemSettingsCore.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="3.4081147" vertical-offset="0" max-vertical-offset="6256">
+                  <caret line="286" column="0" selection-start-line="286" selection-start-column="0" selection-end-line="286" selection-end-column="0" />
+                  <folding>
+                    <element signature="e#12320#14007#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
@@ -471,28 +482,34 @@
       <option name="project" value="LOCAL" />
       <updated>1428608417801</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Got the logging display working and the beginnings of the file transfer logic started.">
+      <created>1428624991552</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1428624991552</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21495327" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.214786" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32788163" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21495327" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.214786" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33021808" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.0981717" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.09896661" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3995327" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -507,14 +524,14 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.214786" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32788163" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21495327" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.214786" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33021808" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.0981717" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.09896661" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -543,7 +560,8 @@
     <MESSAGE value="Hopefully have the full settings setup working, and the gui mostly if not completely finished." />
     <MESSAGE value="Changed visible program name to Transfer Utility since it's probably going to be used on more than just PRAT. Also got the rest of the setting interface done and added some clear logic to make it look and work cleaner. Just need to implement the logic for actually doing the transfers with logging and it should be done." />
     <MESSAGE value="Have part of the scheduler framework working." />
-    <option name="LAST_COMMIT_MESSAGE" value="Have part of the scheduler framework working." />
+    <MESSAGE value="Got the logging display working and the beginnings of the file transfer logic started." />
+    <option name="LAST_COMMIT_MESSAGE" value="Got the logging display working and the beginnings of the file transfer logic started." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -567,7 +585,6 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="583" max-vertical-offset="1411">
           <caret line="77" column="30" selection-start-line="77" selection-start-column="30" selection-end-line="77" selection-end-column="30" />
           <folding>
-            <element signature="e#5522#7592#0" expanded="false" />
             <element signature="e#12320#14007#0" expanded="false" />
           </folding>
         </state>
@@ -624,7 +641,6 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="583" max-vertical-offset="1411">
           <caret line="77" column="30" selection-start-line="77" selection-start-column="30" selection-end-line="77" selection-end-column="30" />
           <folding>
-            <element signature="e#5522#7592#0" expanded="false" />
             <element signature="e#12320#14007#0" expanded="false" />
           </folding>
         </state>
@@ -681,7 +697,6 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="583" max-vertical-offset="1411">
           <caret line="77" column="30" selection-start-line="77" selection-start-column="30" selection-end-line="77" selection-end-column="30" />
           <folding>
-            <element signature="e#5522#7592#0" expanded="false" />
             <element signature="e#12320#14007#0" expanded="false" />
           </folding>
         </state>
@@ -745,7 +760,6 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="833" max-vertical-offset="935">
           <caret line="49" column="37" selection-start-line="49" selection-start-column="37" selection-end-line="49" selection-end-column="37" />
           <folding>
-            <element signature="e#5522#7592#0" expanded="false" />
             <element signature="e#12320#14007#0" expanded="false" />
           </folding>
         </state>
@@ -809,7 +823,6 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="833" max-vertical-offset="935">
           <caret line="49" column="37" selection-start-line="49" selection-start-column="37" selection-end-line="49" selection-end-column="37" />
           <folding>
-            <element signature="e#5522#7592#0" expanded="false" />
             <element signature="e#12320#14007#0" expanded="false" />
           </folding>
         </state>
@@ -884,7 +897,6 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="833" max-vertical-offset="935">
           <caret line="49" column="37" selection-start-line="49" selection-start-column="37" selection-end-line="49" selection-end-column="37" />
           <folding>
-            <element signature="e#5522#7592#0" expanded="false" />
             <element signature="e#12320#14007#0" expanded="false" />
           </folding>
         </state>
@@ -926,13 +938,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/LICENSE">
+      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.29943955" vertical-offset="0" max-vertical-offset="2924">
           <caret line="22" column="55" selection-start-line="22" selection-start-column="55" selection-end-line="22" selection-end-column="55" />
         </state>
-      </provider>
-      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
@@ -970,19 +982,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Interface/SystemSettingsCore.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.7280248" vertical-offset="3898" max-vertical-offset="6256">
-          <caret line="131" column="93" selection-start-line="131" selection-start-column="82" selection-end-line="131" selection-end-column="93" />
-          <folding>
-            <element signature="e#12320#14007#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/PratTransferUtility.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1706" max-vertical-offset="2924">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2261" max-vertical-offset="2907">
           <caret line="135" column="43" selection-start-line="135" selection-start-column="43" selection-end-line="135" selection-end-column="43" />
           <folding>
             <element signature="e#1184#1194#0" expanded="true" />
@@ -991,10 +993,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Interface/SystemSettingsCore.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="3.4081147" vertical-offset="0" max-vertical-offset="6256">
+          <caret line="286" column="0" selection-start-line="286" selection-start-column="0" selection-end-line="286" selection-end-column="0" />
+          <folding>
+            <element signature="e#12320#14007#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Interface/StatusLoggerCore.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1281" max-vertical-offset="2295">
-          <caret line="126" column="88" selection-start-line="126" selection-start-column="88" selection-end-line="126" selection-end-column="88" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="754" max-vertical-offset="2295">
+          <caret line="110" column="20" selection-start-line="110" selection-start-column="20" selection-end-line="110" selection-end-column="20" />
           <folding>
             <element signature="e#1184#1215#0" expanded="true" />
           </folding>
@@ -1011,8 +1023,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Framework/ScheduleHandlerCore.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.60714287" vertical-offset="782" max-vertical-offset="3281">
-          <caret line="81" column="31" selection-start-line="81" selection-start-column="31" selection-end-line="81" selection-end-column="31" />
+        <state vertical-scroll-proportion="1.5688146" vertical-offset="0" max-vertical-offset="4284">
+          <caret line="116" column="25" selection-start-line="116" selection-start-column="25" selection-end-line="116" selection-end-column="25" />
           <folding>
             <element signature="e#1184#1215#0" expanded="true" />
           </folding>
