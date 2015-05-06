@@ -31,9 +31,8 @@ __status__ = "Development"
 # Imports
 #####################################
 # Python native imports
-from PyQt4 import QtCore, QtGui
+from PyQt4 import QtCore
 from os.path import exists, getsize
-import logging
 
 # Custom imports
 import Framework.LoggerCore as LC

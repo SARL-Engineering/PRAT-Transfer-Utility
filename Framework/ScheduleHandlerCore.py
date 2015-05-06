@@ -31,10 +31,10 @@ __status__ = "Development"
 # Imports
 #####################################
 # Python native imports
-from PyQt4 import QtCore, QtGui
+from PyQt4 import QtCore
 import os
 import logging
-from distutils.dir_util import copy_tree, remove_tree
+from distutils.dir_util import copy_tree
 import time
 
 # Custom imports
@@ -67,8 +67,8 @@ class QueueProcessor(QtCore.QThread):
         self.start()
 
     def run(self):
-        a = self.task[0]
-        b = self.task[1]
+        a = self.task[0].replace("\\", "/")
+        b = self.task[1].replace("\\", "/")
         a_to_b = self.task[2]
         clean_a = self.task[3]
         c_a_if_in_b = self.task[4]
